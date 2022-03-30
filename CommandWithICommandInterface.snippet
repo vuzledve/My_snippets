@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Command with ICommand interface</Title>
+			<Shortcut>commandICommand</Shortcut>
+		</Header>
+		<Snippet>
+			<Declarations>
+				
+				<Literal>
+					<ID>NAME</ID>
+					<ToolTip>Название команды</ToolTip>
+					<Default>NAME</Default>
+				</Literal>
+				
+				<Literal>
+					<ID>CanExecute</ID>
+					<ToolTip>Условия, при которых команду можно выполнить</ToolTip>
+					<Default>true</Default>
+				</Literal>
+
+				<Literal>
+					<ID>OnExecuted</ID>
+					<ToolTip>Что делает команда</ToolTip>
+					<Default>if (p is null) return;</Default>
+				</Literal>
+
+			</Declarations>
+			<Code Language="csharp">
+				<![CDATA[
+				
+				#region $NAME$Command
+				public ICommand $NAME$Command { get; }
+				
+				private bool Can$NAME$CommandExecute(object p) => $CanExecute$;
+								
+				private void On$NAME$CommandExecuted(object p)
+				{
+					$OnExecuted$					
+				}
+				#endregion
+				
+				$NAME$Command = new ActionCommand(On$NAME$CommandExecuted, Can$NAME$CommandExecute);
+				
+				]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
